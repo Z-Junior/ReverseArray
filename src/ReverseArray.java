@@ -20,7 +20,9 @@ public class ReverseArray
         for (int i = 0; i < iLen; i++)
             iNums[i] = PromptInt(String.format("Enter the value for %d: ", i + 1));
 
-        System.out.println(String.format("Original order: %s", Arrays.stream(iNums).mapToObj(String::valueOf).collect(Collectors.joining(", "))));
+        System.out.println(String.format("Original order: %s", Arrays.stream(iNums)
+                .mapToObj(String::valueOf) // Lambda -> Have to convert to String for Collectors
+                .collect(Collectors.joining(", "))));
 
         for (int i = 0; i < iLen / 2; i++)
         {
@@ -30,7 +32,9 @@ public class ReverseArray
             iNums[iLen - i - 1] = iTemp;
         }
 
-        System.out.println(String.format("Reversed order: %s", Arrays.stream(iNums).mapToObj(String::valueOf).collect(Collectors.joining(", "))));
+        System.out.println(String.format("Reversed order: %s", Arrays.stream(iNums)
+                .mapToObj(String::valueOf) // Lambda -> Have to convert to String for Collectors
+                .collect(Collectors.joining(", "))));
     }
 
     protected static int PromptInt(String question)
